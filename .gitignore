@@ -1,0 +1,8 @@
+mmpose/
+outputs/
+__pycache__/
+.ipynb_checkpoints/
+*.mp4
+*.glb
+server.log
+nohup.out

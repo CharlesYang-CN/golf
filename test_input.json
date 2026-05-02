@@ -1,0 +1,8 @@
+{
+  "input": {
+    "video_path": "/workspace/24.mp4",
+    "handedness": "right",
+    "club_type": "iron",
+    "view_transform": "rotate-180"
+  }
+}
