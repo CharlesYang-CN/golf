@@ -13,12 +13,13 @@ RUN pip install --no-cache-dir mmcv==2.1.0 -f https://download.openmmlab.com/mmc
 RUN pip install --no-cache-dir mmpose==1.3.2
 
 # 安装项目特定的其他依赖
-RUN pip install --no-cache-dir "runpod~=1.7.6" "trimesh>=4.0.0" "matplotlib>=3.8.4" "opencv-python"
+RUN pip install --no-cache-dir "runpod~=1.7.6" "trimesh>=4.0.0" "matplotlib>=3.8.4" "opencv-python" "fastapi" "uvicorn" "httpx" "pydantic"
 
 # 拷贝工作目录下的所有核心代码
 COPY run_golf_3d_whole_image.py /workspace/run_golf_3d_whole_image.py
 COPY render_club_from_json.py /workspace/render_club_from_json.py
 COPY runpod_handler.py /workspace/runpod_handler.py
+COPY fastapi_server.py /workspace/fastapi_server.py
 COPY test_input.json /workspace/test_input.json
 
 # 设置环境变量

@@ -1,0 +1,11 @@
+public_jobs/
+outputs/
+server.log
+nohup.out
+*.mp4
+*.glb
+__pycache__/
+.ipynb_checkpoints/
+.git/
+*.pyc
+videos/
