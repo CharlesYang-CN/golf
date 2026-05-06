@@ -25,4 +25,4 @@ jobs:
           no-cache: true
           tags: |
             charlesyang1234/golf:latest
-            charlesyang1234/golf:v1.0.2
+            charlesyang1234/golf:v1.0.3

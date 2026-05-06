@@ -3,14 +3,17 @@ FROM runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04
 
 WORKDIR /workspace
 
-# 安装系统依赖
-RUN apt-get update && apt-get install -y libgl1-mesa-glx libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+# 安装系统依赖 & 删除系统级 numpy（apt 安装的 numpy 与 pip 版本冲突导致 xtcocotools ABI 不兼容）
+RUN apt-get update && apt-get install -y libgl1-mesa-glx libglib2.0-0 \
+    && apt-get remove -y python3-numpy || true \
+    && rm -rf /var/lib/apt/lists/*
 
-# 修复基础镜像 numpy 版本兼容性问题（需彻底删除旧 numpy，再重装）
-# xtcocotools 依赖 numpy ABI，旧 numpy dtype=88byte vs 新 numpy dtype=96byte 会导致 import 崩溃
+# 修复 numpy 版本兼容性：pip uninstall + 系统级移除双重保障
 RUN pip uninstall -y numpy xtcocotools || true
 RUN pip install --no-cache-dir "numpy==1.26.4"
 RUN pip install --no-cache-dir --force-reinstall xtcocotools || true
+# 验证 numpy 版本
+RUN python -c "import numpy; print(f'numpy {numpy.__version__} at {numpy.__file__}')"
 
 # 安装 OpenMMLab 核心依赖
 # 使用官方预编译的 MMCV 轮子以加快构建速度并确保稳定性
