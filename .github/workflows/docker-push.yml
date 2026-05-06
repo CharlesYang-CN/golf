@@ -22,4 +22,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: charlesyang1234/golf:latest
+          tags: |
+            charlesyang1234/golf:latest
+            charlesyang1234/golf:v1.0.1
