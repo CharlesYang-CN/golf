@@ -1,0 +1,5 @@
+numpy==1.26.4
+opencv-python==4.9.0.80
+opencv-python-headless==4.9.0.80
+xtcocotools==1.14.3
+pycocotools==2.0.11
