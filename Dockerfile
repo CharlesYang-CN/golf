@@ -6,6 +6,9 @@ WORKDIR /workspace
 # 安装系统依赖
 RUN apt-get update && apt-get install -y libgl1-mesa-glx libglib2.0-0 && rm -rf /var/lib/apt/lists/*
 
+# 修复基础镜像 numpy 版本兼容性问题（xtcocotools 二进制不兼容会导致 dtype size changed 错误）
+RUN pip install --no-cache-dir --force-reinstall "numpy==1.26.4"
+
 # 安装 OpenMMLab 核心依赖
 # 使用官方预编译的 MMCV 轮子以加快构建速度并确保稳定性
 RUN pip install --no-cache-dir mmengine==0.10.7
