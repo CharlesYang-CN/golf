@@ -25,5 +25,5 @@ jobs:
           no-cache: true
           tags: |
             charlesyang1234/golf:latest
-            charlesyang1234/golf:v1.0.4
+            charlesyang1234/golf:v1.0.5
             charlesyang1234/golf:${{ github.sha }}

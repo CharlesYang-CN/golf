@@ -45,10 +45,12 @@ def handler(event):
         )
 
         glb_bytes = Path(result["club_glb"]).read_bytes()
+        pred_bytes = Path(result["pred_json"]).read_bytes()
         response = {
             "ok": True,
             "meta": result,
             "glb_base64": base64.b64encode(glb_bytes).decode("ascii"),
+            "pred_json_base64": base64.b64encode(pred_bytes).decode("ascii"),
         }
         if payload.get("include_mp4_base64", False):
             mp4_bytes = Path(result["club_video"]).read_bytes()
